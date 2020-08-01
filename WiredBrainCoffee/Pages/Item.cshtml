@@ -6,7 +6,7 @@
 
 <div class="container">
     <h1 class="mt-4 mb-3">
-   x     @Model.Item.Name
+        x     @Model.Item.Name
     </h1>
     <hr />
     <h3>A Taste of Autumn.</h3>
@@ -42,6 +42,9 @@
                     </ul>
                 </div>
             </div>
+            <hr />
+
+            @await Component.InvokeAsync("PopularBrews", new { count = 2 })
         </div>
     </div>
 </div>
