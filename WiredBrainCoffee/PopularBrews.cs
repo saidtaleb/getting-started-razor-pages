@@ -7,10 +7,16 @@
 
     public class PopularBrews : ViewComponent
     {
+        private readonly IMenuService _menuService;
+
+        public PopularBrews(IMenuService menuService)
+        {
+            _menuService = menuService;
+        }
+
         public async Task<IViewComponentResult> InvokeAsync(int count)
         {
-            var menu = new MenuService();
-            var items = menu.GetMenuItems().Take(count);
+            var items = _menuService.GetMenuItems().Take(count);
             return View(items);
         }
     }

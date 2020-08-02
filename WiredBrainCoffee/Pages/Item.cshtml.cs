@@ -8,12 +8,16 @@
     public class ItemModel : PageModel
     {
         public MenuItem Item { get; private set; }
+        private readonly IMenuService _menuService;
+
+        public ItemModel(IMenuService menuService)
+        {
+            _menuService = menuService;
+        }
 
         public void OnGet(string slug)
         {
-            var menuService = new MenuService();
-            Item = menuService
-                        .GetMenuItems()
+            Item = _menuService.GetMenuItems()
                         .FirstOrDefault(e => e.Slug == slug);
         }
     }
